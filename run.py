@@ -321,27 +321,28 @@ class MainTree():
 
         cmd = ' '.join([
                 'TexturePacker',
-                '--algorithm MaxRects',
+                '--algorithm Basic',
                 '--maxrects-heuristics Best',
                 '--pack-mode Best',
                 '--scale %s'%args.scale,
-                '--premultiply-alpha',
+                #'--premultiply-alpha',
                 '--sheet %s' %(tpath + os.path.sep + '%s.png'%OUTPUT_NAME),
                 '--texture-format png',
-                '--extrude 2',
+                #'--extrude 2',
                 '--data %s' % (tpath + os.path.sep + '%s.json'%OUTPUT_NAME),
                 '--format json',
-                '--trim-mode Trim',
+                '--trim-mode None',
                 '--disable-rotation',
                 '--size-constraints AnySize',
                 '--max-width 2048',
                 '--max-height 2048',
-                '--common-division-x 2',
-                '--common-division-y 2',
+                #'--common-divisor-x 2',
+                #'--common-divisor-y 2',
                 #'--shape-debug',
                 '%s' %  (tpath + os.path.sep + 'singleimg')
                 ])
-
+        if (not args.quiet):
+            print(cmd)
         sts, out = self.ExecuteCmd(cmd)
         if sts == 0:
             if (not args.quiet):
