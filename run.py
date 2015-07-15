@@ -18,7 +18,7 @@ argParser.add_argument("-i", "--input", help="input folder", type=str, default=N
 argParser.add_argument("-o", "--output", help="output folder", type=str, default=None)
 argParser.add_argument("-x", "--xml", help="export xml", action="store_true", default=False)
 argParser.add_argument("-s", "--scale", help="scale the source images", type=float, default=1)
-argParser.add_argument("--with-png", help="output with the combined png", action="store_true", default=False)
+argParser.add_argument("--with-png", help="output with the combined png", action="store_true", default=True)
 argParser.add_argument("--quiet", action="store_true", default=False)
 argParser.add_argument("--extend-name", help="extra string after name", type=str, default="")
 group = argParser.add_mutually_exclusive_group()
@@ -52,7 +52,7 @@ FLASH_ROOT = args.input
 OUTPUT_PATH = args.output
 
 OUTPUT_NAME = "flash"
-LEAVE_FILE = ['%s.1.ppm'%OUTPUT_NAME, '%s.1.pgm'%OUTPUT_NAME, '%s.lua'%OUTPUT_NAME]
+LEAVE_FILE = ['%s.lua'%OUTPUT_NAME]
 if args.with_png:
     LEAVE_FILE.append('%s.1.png'%OUTPUT_NAME)
 
